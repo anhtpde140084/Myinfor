@@ -1,0 +1,62 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="AboutUs" class="controller.AccountActionSupport" method="execute">
+            <result name="success">about.jsp</result>
+        </action>
+        <action name="SendContact" class="controller.SendMailActionSupport" method="execute">
+            <result name="success">contact.jsp</result>
+        </action>
+        
+        <action name="AddBlog" class="adminController.AddBlogActionSupport" method="execute">
+            <result name="success">BlogPost.jsp</result>
+            <result name="INPUT">BlogPost.jsp</result>
+            <result name="fail">BlogPost.jsp</result>
+        </action>
+        
+        <action name="ShowAllBlog" class="adminController.GetAllBlogActionSupport" method="execute">
+            <result name="success">BlogManage.jsp</result>
+        </action>
+        
+        <action name="displayBlog" class="adminController.GetAllBlogActionSupport" method="displayById">
+            <result name="success">BlogModify.jsp</result>  
+            <result name="fail">404.jsp</result>   
+        </action>
+        
+        <action name="DeleteBlog" class="adminController.GetAllBlogActionSupport" method="DeleteBlog">
+            <result name="success" type="redirectAction">ShowAllBlog</result>  
+            <result name="fail">404.jsp</result>    
+        </action>
+        
+        
+        
+        <action name="UpdateBlog" class="adminController.UpdateBlogActionSupport" method="UpdateBlog">
+            <result name="success" type="redirectAction">ShowAllBlog</result> 
+            <result name="fail">404.jsp</result>     
+        </action>
+        
+        <action name="Login" class="adminController.LoginActionSupport" method="execute">
+            <result name="success">home.jsp</result>  
+            <result name="input">Login.jsp</result>    
+        </action>
+        
+         <action name="logoutAction" class="adminController.LoginActionSupport" method="logout">
+            <result name="LOGOUT">Login.jsp</result>
+            <result name="">home.jsp</result>
+        </action> 
+        <!-- =============================================== -->
+        <action name="ShowBlogs" class="controller.ShowBlogsActionSupport" method="execute">
+            <result name="success">weblog.jsp</result>
+            <result name="fail">404.jsp</result>  
+        </action>
+        
+        <action name="Blog" class="controller.ShowBlogsActionSupport" method="displayById">
+            <result name="success">blog.jsp</result>   
+            <result name="fail">404.jsp</result>   
+        </action>
+    </package>
+</struts>
